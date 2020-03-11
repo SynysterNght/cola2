@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.ServiceBus;
 using System;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace cola2
@@ -18,10 +19,14 @@ namespace cola2
             string messageBody = $"Estoy descargando durante probamos en la clase";
             var message = new Message(Encoding.UTF8.GetBytes(messageBody));
             await queueClient.SendAsync(message);
+            Console.WriteLine("Subio el mensaje");
             Console.ReadKey();
-
             await queueClient.CloseAsync();
 
         }
+        
+
+       
+        
     }
 }
